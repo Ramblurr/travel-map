@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Journey</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
+    <![endif]-->
+</head>
+<body>
+    <div id="map-canvas"></div>
+
+
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v2/cartodb.js"></script>
+    <script>
+
+    (function(){
+
+        // Basic leaflet setup
+        var map = L.map('map-canvas', {
+            center: [48,14],
+            zoom: 5
+        });
+        map.scrollWheelZoom.disable();
+
+        L.tileLayer('http://a.tiles.mapbox.com/v3/ramblurr.map-l4hsfks6/{z}/{x}/{y}.png', {
+            attribution: 'MapBox'
+        }).addTo(map);
+
+      var points_url = 'http://elusivetruth.cartodb.com/api/v1/viz/7049/viz.json'
+      var journey_url = 'http://elusivetruth.cartodb.com/api/v1/viz/7031/viz.json'
+
+
+        cartodb.createLayer(map, journey_url, {
+            query: 'select  *, ST_AsGeoJSON(the_geom) as geometry from {{table_name}}',
+            interactivity: 'cartodb_id, geometry'
+        })
+            .on('done', function(layer) {
+                map.addLayer(layer);
+
+            layer.on('featureOver', function(e, pos, latlng, data) {
+                $('.leaflet-container').css('cursor','pointer');
+                // Check to see if it's a different polygon from the one you're hovering over.
+                if (data.cartodb_id != polyline.cartodb_id) {
+                    drawHoverPoint(data);
+                }
+                // cartodb.log.log(pos, data);
+            });
+
+            layer.on('featureOut', function(e, pos, latlng, data) {
+                $('.leaflet-container').css('cursor','default')
+                removePoint();
+            });
+
+            layer.on('error', function(err) {
+                cartodb.log.log('error: ' + err);
+            });
+
+        }).on('error', function() {
+            cartodb.log.log("some error occurred");
+        });
+
+
+        var polyline = new L.GeoJSON(null)
+        // Hover polyline style
+        var polyline_style = {color:"#ffffff", weight: 5, opacity:0.5, fillOpacity: 0, clickable:false}
+        function drawHoverPoint(data){
+            removePoint();
+
+            polyline = new L.GeoJSON(JSON.parse(data.geometry),{
+                style: function (feature) {
+                    return polyline_style;
+                  }
+            }).addTo(map);
+
+        }
+
+        function removePoint(){
+            map.removeLayer(polyline);
+            polyline.cartodb_id = null;
+        }
+
+        var $map_canvas = $('#map-canvas');
+
+        $map_canvas.mouseleave(function(e){
+            removePoint();
+        })
+
+
+    }).call(this);
+
+  </script>
+
+</body>
+</html>

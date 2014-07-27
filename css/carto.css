@@ -1,0 +1,69 @@
+POINTS 
+#points [reason='living'] {
+  marker-placement: point;
+  marker-file: url('http://api.tiles.mapbox.com/v3/marker/pin-l-warehouse+7e7e7e.png');
+  marker-allow-overlap: true;
+}
+
+/* 
+old link
+
+*/
+
+#points [reason='bicycle'] {
+  marker-placement: point;
+marker-file: url('http://api.tiles.mapbox.com/v3/marker/pin-l-bicycle+8c4.png');
+  marker-allow-overlap: true;
+}
+
+#points [reason='raft'] {
+  marker-placement: point;
+  marker-file: url('http://elusivetruth.net/map/img/markers/pin-raft-l-blue.png');
+  marker-allow-overlap: true;
+}
+
+LINES
+
+
+#journey [type='river']{
+  line-width: 4;
+  line-color: #5CA2D1;
+  line-opacity: 1;
+  line-comp-op: overlay;
+}
+
+#journey [type='projected']{
+  line-width: 3;
+  line-color: #DF3AFC;
+  line-opacity: 1;
+  line-comp-op: overlay;
+}
+
+#journey [type='peddle']{
+  line-width: 4;
+  line-color: #66FF33;
+  line-opacity: 1;
+}
+
+#journey [type='paddle']{
+  line-width: 4;
+  line-color: #2EFFFF;
+  line-opacity: 1;
+}
+
+#journey [type='bus']{
+  line-width: 3;
+  line-color: #FC3560;
+  line-opacity: 0.7;
+}
+
+#journey [type='driven']{
+  line-width: 3;
+  line-color: #FF9900;
+  line-opacity: 0.7;
+}
+
+
+#journey::labels {
+
+}
