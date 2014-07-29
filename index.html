@@ -24,15 +24,14 @@
          <div class="cartodb-popup-content-wrapper">
          <div class="custom-popup-content">
             {{#content.data.img}}
-            <ul><li><img src='img/points/{{content.data.img}}.png'/><h4>{{content.data.name}}</h4></li></ul>
+            <ul><li><img src='{{content.data.img}}'/><h4>{{content.data.name}}</h4></li></ul>
             {{/content.data.img}}
             {{^content.data.img}}
             <ul><li><img src='img/background.png'/><h4>{{content.data.name}}</h4></li></ul>
             {{/content.data.img}}
-            {{#content.data.video_url}}
-              <a class="videoButton" href="{{content.data.video_url}}" target="_blank"> </a>
-            {{/content.data.video_url}}
-            <p>{{{content.data.description}}}</p>
+            <p>{{{content.data.description}}}
+            <span>&nbsp;{{{content.data.read_more}}}</span>
+            </p>
          </div>
          </div>
          <div class="custom-popup-tip-container"></div>

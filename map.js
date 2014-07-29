@@ -114,7 +114,7 @@ function main() {
         point_layer.setInteraction(true);
         point_layer.infowindow.set('template', $('#infowindow_template').html());
         point_layer.set({
-            interactivity: 'cartodb_id,name,description'
+            interactivity: 'cartodb_id,name,description,read_more'
         });
         point_layer.on('featureOver', function(e, pos, latlng, data) {
             $('.leaflet-container').css('cursor', 'pointer');
