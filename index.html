@@ -22,7 +22,7 @@
       <div class="cartodb-popup">
         <a href="#close" class="cartodb-popup-close-button close">x</a>
          <div class="cartodb-popup-content-wrapper">
-           <div class="cartodb-popup-content">
+         <div class="custom-popup-content">
             {{#content.data.img}}
             <ul><li><img src='img/points/{{content.data.img}}.png'/><h4>{{content.data.name}}</h4></li></ul>
             {{/content.data.img}}
@@ -33,9 +33,9 @@
               <a class="videoButton" href="{{content.data.video_url}}" target="_blank"> </a>
             {{/content.data.video_url}}
             <p>{{{content.data.description}}}</p>
-           </div>
          </div>
-         <div class="cartodb-popup-tip-container"></div>
+         </div>
+         <div class="custom-popup-tip-container"></div>
       </div>
     </script>
   </head>

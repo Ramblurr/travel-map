@@ -21,7 +21,6 @@ div#overlay{
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	filter: progrid:DXImageTransform.Microsoft.AlphaImage(src='.../img/overlay.png', sizingMethod='scale');
 	-ms-filter: "progrid:DXImageTransform.Microsoft.AlphaImage(src='../img/overlay.png', sizingMethod='scale')";
 	pointer-events: none;
 }
@@ -93,6 +92,7 @@ div.cartodb_tooltip p {
 }
 
 /*SYLES FOR THE CUSTOM INFOWINDOW*/
+/*
 div.cartodb-popup {
 	background: none;
 	width: 240px;
@@ -155,7 +155,7 @@ margin:0;
 div.cartodb-popup-content-wrapper ul li img {
     margin: 0;
     vertical-align:top; 
-    border:1px solid gray; /* or 0px */
+    border:1px solid gray; 
 }
 
 div.cartodb-popup-content-wrapper ul li h4{
@@ -171,12 +171,12 @@ div.cartodb-popup div.cartodb-popup-content h4{
 	text-shadow: 0 1px 0.2em rgba(0,0,0,1.0);
 	letter-spacing: -1px;
     padding: 3px;
-    position:absolute; /* Important */
-    width:100%; /* Important */
-    bottom:0; /* Important */
+    position:absolute; /* Important * /
+    width:100%; /* Important * /
+    bottom:0; /* Important * /
     left:0;
     background-color:rgba(0, 0, 0, 0.4);
-    filter:alpha(opacity=50);3
+    filter:alpha(opacity=50);
 }
 
 div.cartodb-popup div.cartodb-popup-content a.videoButton{
@@ -244,7 +244,7 @@ div.cartodb-popup div.cartodb-popup-tip-container::after {
 	height: 0;
 	z-index: 1;
 }
-
+*/
 div.cartodb-infobox {
 	font-family: "Helvetica",Arial;
 }
