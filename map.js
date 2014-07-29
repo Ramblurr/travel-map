@@ -14,7 +14,7 @@ function main() {
         });
     }
     params.interaction = params.interaction == "false" ? false : true;
-    params.scrollZoom = params.scrollZoom == "false" || !params.interaction ? false : true;
+    params.scrollWheelZoom = params.scrollWheelZoom == "false" || !params.interaction ? false : true;
 
     if(params.place) {
         if(params.place == "europe") {
@@ -60,7 +60,7 @@ function main() {
             native_map.scrollWheelZoom.disable();
             native_map.boxZoom.disable();
             native_map.keyboard.disable();
-        } else if(!params.scrollWheelZoom) {
+        } else if(params.scrollWheelZoom) {
             native_map.scrollWheelZoom.disable();
         }
         L.control.pan({position:'topleft'}).addTo(native_map);
@@ -153,6 +153,5 @@ function removeLine() {
     native_map.removeLayer(polyline);
     polyline.cartodb_id = null;
 }
-
 
 window.onload = main;
