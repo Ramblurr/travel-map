@@ -72,13 +72,14 @@ function main() {
         route_layer.infowindow.set('template', $('#infowindow_template').html());
         route_layer.set({
             sql: 'select  *, ST_AsGeoJSON(the_geom) as geometry from journey',
-            interactivity: 'cartodb_id,geometry,name,description,url,url_text'
+            interactivity: 'cartodb_id,geometry,name,description'
         });
 
         // add the tooltip show when hover on the point
         vis.addOverlay({
             type: 'tooltip',
             template: '<p>{{name}}</p>'
+            //template: '<div class="cartodb-popup"><div class="cartodb-popup-content-wrapper"><div class="custom-popup-content">{{#img}}<ul><li><img src="{{img}}"/><h4>{{name}}</h4></li></ul>{{/img}}{{^img}}<ul><li><img src="img/background.png"/><h4>{{name}}</h4></li></ul>{{/img}}<p>{{{description}}}</p></div></div><div class="custom-popup-tip-container"></div></div>'
         });
 
         // HACK - manually add overlay to attach it to your route layer
@@ -114,7 +115,7 @@ function main() {
         point_layer.setInteraction(true);
         point_layer.infowindow.set('template', $('#infowindow_template').html());
         point_layer.set({
-            interactivity: 'cartodb_id,name,description,read_more'
+            interactivity: 'cartodb_id,name,description,read_more,img'
         });
         point_layer.on('featureOver', function(e, pos, latlng, data) {
             $('.leaflet-container').css('cursor', 'pointer');
