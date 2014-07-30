@@ -31,8 +31,8 @@ function main() {
             params.zoom = 6;
        }
     }
-    var travel_url = 'http://elusivetruth.cartodb.com/api/v2/viz/d8b9da38-0a4d-11e3-8c39-3085a9a956e8/viz.json';
-    var route_url = 'http://elusivetruth.cartodb.com/api/v2/viz/fe3bc0aa-10e1-11e4-87db-0edbca4b5057/viz.json';
+    var travel_url = 'https://elusivetruth.cartodb.com/api/v2/viz/d8b9da38-0a4d-11e3-8c39-3085a9a956e8/viz.json';
+    var route_url = 'https://elusivetruth.cartodb.com/api/v2/viz/fe3bc0aa-10e1-11e4-87db-0edbca4b5057/viz.json';
 
     var vis_url = travel_url;
     if(params.route) {
