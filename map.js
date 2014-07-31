@@ -63,7 +63,7 @@ function main() {
         } else if(params.scrollWheelZoom) {
             native_map.scrollWheelZoom.disable();
         }
-        L.control.pan({position:'topleft'}).addTo(native_map);
+        L.control.pan({panOffset: 100, position:'topleft'}).addTo(native_map);
         L.control.zoom({position:'topleft'}).addTo(native_map);
         // there are two layers, base layer and points layer
         var route_layer = layers[1].getSubLayer(0);
