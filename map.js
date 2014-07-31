@@ -1,4 +1,9 @@
 var native_map;
+function preload(url) {
+    var img = new Image();
+    console.log("preloading: " + url);
+    img.src = url;
+}
 
 function main() {
 
@@ -126,7 +131,18 @@ function main() {
         point_layer.on('featureClick', function(e, pos, latlng, data) {
             // no-op
         });
-    });
+        var sql = new cartodb.SQL({ user: 'elusivetruth' });
+        sql.execute("SELECT img FROM points WHERE img LIKE 'http%'")
+        .done(function(data) {
+            for(var i = 0; i < data.rows.length; i++) {
+                preload(data.rows[i].img);
+            }
+        })
+        .error(function(errors) {
+            // errors contains a list of errors
+            console.log("errors:" + errors);
+        })
+        });
 }
 
 var polyline = new L.GeoJSON(null);
