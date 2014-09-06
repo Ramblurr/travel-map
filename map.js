@@ -76,7 +76,7 @@ function main() {
         route_layer.setInteraction(true);
         route_layer.infowindow.set('template', $('#infowindow_template').html());
         route_layer.set({
-            sql: 'select  *, ST_AsGeoJSON(the_geom) as geometry from journey',
+            sql: 'select  *, ST_AsGeoJSON(the_geom) as geometry from journey where (show is true or show is null)',
             interactivity: 'cartodb_id,geometry,name,description'
         });
 
